@@ -1,0 +1,1446 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Aemo",
+        "description": "Access to AEMO Web Services - Including NMI Discovery and standing Data .   See [Tally Documentation](https://tallyit.atlassian.net/wiki/spaces/PUB/pages/876019721/AEMO+API) for a detailed description of how to use the API and examples.  \n",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "https://tallyapi.azure-api.net/aemo"
+        }
+    ],
+    "paths": {
+        "/StandingtData": {
+            "get": {
+                "tags": [
+                    "Search"
+                ],
+                "summary": "StandingtData",
+                "description": "This  operation takes a NMI and outputs the standing data in a XML format",
+                "operationId": "get-standingtdata",
+                "parameters": [
+                    {
+                        "name": "nmi",
+                        "in": "query",
+                        "description": "the nmi, inputted with no formatting ",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "participantUser",
+                        "in": "header",
+                        "description": "The user code for the participant",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "participantPassword",
+                        "in": "header",
+                        "description": "The participants passcode",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "participant",
+                        "in": "header",
+                        "description": "The participant code",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "null"
+                    }
+                }
+            }
+        },
+        "/Status": {
+            "get": {
+                "tags": [
+                    "Search"
+                ],
+                "summary": "Status",
+                "description": "This operation takes no inputs and gives all statuses in a JSON format as an output.",
+                "operationId": "get-status",
+                "parameters": [
+                    {
+                        "name": "participantUser",
+                        "in": "header",
+                        "description": "The user code for the participant",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "participantPassword",
+                        "in": "header",
+                        "description": "The participants passcode",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "participant",
+                        "in": "header",
+                        "description": "The participant code",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "null"
+                    }
+                }
+            }
+        },
+        "/PreviousFrmp": {
+            "get": {
+                "tags": [
+                    "Search"
+                ],
+                "summary": "PreviousFrmp",
+                "description": "This operation takes the NMI and gives the previous energy provider (assuming recent). This is outputted in a JSON format.",
+                "operationId": "get-previousfrmp",
+                "parameters": [
+                    {
+                        "name": "nmi",
+                        "in": "query",
+                        "description": "the nmi, inputted with no formatting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "participantUser",
+                        "in": "header",
+                        "description": "The user code for the participant",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "participantPassword",
+                        "in": "header",
+                        "description": "The participants passcode",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "participant",
+                        "in": "header",
+                        "description": "The participant code",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "null"
+                    }
+                }
+            }
+        },
+        "/NmiDetails": {
+            "get": {
+                "tags": [
+                    "Search"
+                ],
+                "summary": "NmiDetails",
+                "description": "This operation takes the NMI and outputs the relevant NMI detailed result in a JSON format",
+                "operationId": "get-nmidetails",
+                "parameters": [
+                    {
+                        "name": "nmi",
+                        "in": "query",
+                        "description": "The nmi code, inputted with no formatting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "participantUser",
+                        "in": "header",
+                        "description": "The user code for the participant",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "participantPassword",
+                        "in": "header",
+                        "description": "The participants passcode",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "participant",
+                        "in": "header",
+                        "description": "The participant code",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "null"
+                    }
+                }
+            }
+        },
+        "/DiscoverViaDpid": {
+            "get": {
+                "tags": [
+                    "Search"
+                ],
+                "summary": "DiscoverViaDpid",
+                "description": "This operation takes a DPID and its relevant jurisdiction code. It outputs a NMI detailed result in a JSON format",
+                "operationId": "get-discoverviadpid",
+                "parameters": [
+                    {
+                        "name": "jurisdiction",
+                        "in": "query",
+                        "description": "the jurisdiction code, normally the state it is within",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "vic"
+                        }
+                    },
+                    {
+                        "name": "DPID",
+                        "in": "query",
+                        "description": "The DPID, between 3 and 10 long normally.",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "123456"
+                        }
+                    },
+                    {
+                        "name": "participantUser",
+                        "in": "header",
+                        "description": "The user code for the participant",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "participantPassword",
+                        "in": "header",
+                        "description": "The participants passcode",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "participant",
+                        "in": "header",
+                        "description": "The participant code",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "null"
+                    }
+                }
+            }
+        },
+        "/DiscoverViaMeterSerial": {
+            "get": {
+                "tags": [
+                    "Search"
+                ],
+                "summary": "DiscoverViaMeterSerial",
+                "description": "This operation takes a Meter Serial and its relevant jurisdiction code. It outputs a NMI detailed result in a JSON format",
+                "operationId": "get-discoverviameterserial",
+                "parameters": [
+                    {
+                        "name": "jurisdiction",
+                        "in": "query",
+                        "description": "the jurisdiction code, normally same as state",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "vic"
+                        }
+                    },
+                    {
+                        "name": "Meter Serial",
+                        "in": "query",
+                        "description": "the meter serial, between 3 and 20 long normally",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "123456"
+                        }
+                    },
+                    {
+                        "name": "participantUser",
+                        "in": "header",
+                        "description": "The user code for the participant",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "participantPassword",
+                        "in": "header",
+                        "description": "The participants passcode",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "participant",
+                        "in": "header",
+                        "description": "The participant code",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "null"
+                    }
+                }
+            }
+        },
+        "/DiscoverViaStructuredAddress": {
+            "get": {
+                "tags": [
+                    "Search"
+                ],
+                "summary": "DiscoverViaStructuredAddress",
+                "description": "This operation takes at least a jurisdiction code, a postcode, a street name, and a house number, various other inputs can be used.\nIt outputs a NMI detailed result in a JSON format",
+                "operationId": "get-discoverviastructuredaddress",
+                "parameters": [
+                    {
+                        "name": "jurisdiction",
+                        "in": "query",
+                        "description": "the jurisdiction code, normally same as state",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "vic"
+                        }
+                    },
+                    {
+                        "name": "streetname",
+                        "in": "query",
+                        "description": "the street name",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "cubitt"
+                        }
+                    },
+                    {
+                        "name": "postcode",
+                        "in": "query",
+                        "description": "the postcode",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "3121"
+                        }
+                    },
+                    {
+                        "name": "housenumber",
+                        "in": "query",
+                        "description": "the house number",
+                        "schema": {
+                            "type": "string",
+                            "default": "9"
+                        }
+                    },
+                    {
+                        "name": "flatorunitnumber",
+                        "in": "query",
+                        "description": "the unit number",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "housenumbersuffix",
+                        "in": "query",
+                        "description": "the house number suffix such as A in 2A",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lotnumber",
+                        "in": "query",
+                        "description": "the lot number, maybe used instead of house number",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "participantUser",
+                        "in": "header",
+                        "description": "The user code for the participant",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "participantPassword",
+                        "in": "header",
+                        "description": "The participants passcode",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "participant",
+                        "in": "header",
+                        "description": "The participant code",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "null"
+                    }
+                }
+            }
+        },
+        "/Limits": {
+            "get": {
+                "tags": [
+                    "Search"
+                ],
+                "summary": "Limits",
+                "description": "This operation takes no inputs and provides details on your MSATS Limits status.",
+                "operationId": "get-limits",
+                "parameters": [
+                    {
+                        "name": "participantUser",
+                        "in": "header",
+                        "description": "The user code for the participant",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "participantPassword",
+                        "in": "header",
+                        "description": "The participants passcode",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "participant",
+                        "in": "header",
+                        "description": "The participant code",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "null"
+                    }
+                }
+            }
+        },
+        "/DiscoverViaAddress": {
+            "get": {
+                "tags": [
+                    "Search"
+                ],
+                "summary": "DiscoverViaAddress",
+                "description": "This operation takes an input of a single line address and outputs a detailed NMI result within JSON format. It can also take input of NMI's, DPID's and Meter Serial's if given the correct input format, these each use the other operations within the api.\nThis returns a detailed NMI result.",
+                "operationId": "get-discoverviaaddress",
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "query",
+                        "description": "The address input, preferably in the format of:\n\"Unit X, X street name, suburb, postcode\" or close to it.\nalso capable of using NMI, DPID and Meter serial inputs,\nNMI: \"12345678901\",\nDPID: \"DPID 123456 (state code)\", \nMeter: \"meter 123456 (state code)\"\n case does not matter",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "9 cubitt street, cremorne, 3121"
+                        }
+                    },
+                    {
+                        "name": "participantUser",
+                        "in": "header",
+                        "description": "The user code for the participant",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "participantPassword",
+                        "in": "header",
+                        "description": "The participants passcode",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "participant",
+                        "in": "header",
+                        "description": "The participant code",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DiscoveryResult"
+                                },
+                                "example": {
+                                    "searchMethod": "SINGLELINEADDRESS",
+                                    "addressValid": true,
+                                    "addressesSearched": [
+                                        "293 BELMORE RD, BALWYN NORTH VIC 3104"
+                                    ],
+                                    "matchingSites": [
+                                        {
+                                            "detailed": true,
+                                            "nmi": "6103052254",
+                                            "checkSum": "1",
+                                            "accessDetails": null,
+                                            "addressLine": null,
+                                            "addressLine2": null,
+                                            "addressLine3": null,
+                                            "aggregate": null,
+                                            "buildingOrPropertyName": null,
+                                            "buildingOrPropertyName2": null,
+                                            "childEmbeddedNetworkIdentifier": null,
+                                            "customerClassificationCode": "RESIDENTIAL",
+                                            "customerThresholdCode": "LOW",
+                                            "deliveryPointIdentifier": null,
+                                            "distanceFromSubstation": null,
+                                            "distributionLossFactorCode": "ELVE",
+                                            "feederClass": null,
+                                            "flatOrUnitNumber": null,
+                                            "flatOrUnitType": null,
+                                            "floorOrLevelNumber": null,
+                                            "floorOrLevelType": null,
+                                            "houseNumber": 293,
+                                            "houseNumber2": null,
+                                            "houseNumberSuffix": null,
+                                            "houseNumberSuffix2": null,
+                                            "jurisdictionCode": "VIC",
+                                            "locationDescriptor": null,
+                                            "lotNumber": null,
+                                            "nmiClassificationCode": "SMALL",
+                                            "parentEmbeddedNetworkIdentifier": null,
+                                            "poleNumber": null,
+                                            "postCode": "3104",
+                                            "stateOrTerritory": "VIC",
+                                            "status": "A",
+                                            "streetName": "BELMORE",
+                                            "streetName2": null,
+                                            "streetSuffix": null,
+                                            "streetSuffix2": null,
+                                            "streetType": "RD",
+                                            "streetType2": null,
+                                            "suburbOrPlaceOrLocality": "BALWYN NORTH",
+                                            "transmissionNodeIdentifier": "VTS2",
+                                            "voltageType": null,
+                                            "roles": [
+                                                {
+                                                    "party": "CITIPP",
+                                                    "role": "LNSP"
+                                                },
+                                                {
+                                                    "party": "CPNETMDP",
+                                                    "role": "MDP"
+                                                },
+                                                {
+                                                    "party": "CITIPWMP",
+                                                    "role": "MPB"
+                                                },
+                                                {
+                                                    "party": "CPNETMDP",
+                                                    "role": "MPC"
+                                                },
+                                                {
+                                                    "party": "CITIPP",
+                                                    "role": "RP"
+                                                }
+                                            ],
+                                            "meters": [
+                                                {
+                                                    "additionalSiteInformation": null,
+                                                    "assetManagementPlan": null,
+                                                    "calibrationTables": null,
+                                                    "communicationsEquipmentType": null,
+                                                    "communicationsProtocol": null,
+                                                    "constant": null,
+                                                    "customerFundedMeter": null,
+                                                    "dataConversion": null,
+                                                    "dataValidations": null,
+                                                    "estimationInstructions": null,
+                                                    "hazard": null,
+                                                    "installationTypeCode": "MRIM",
+                                                    "keyCode": null,
+                                                    "lastTestDate": null,
+                                                    "location": null,
+                                                    "manufacturer": null,
+                                                    "measurementType": null,
+                                                    "model": null,
+                                                    "nextScheduledReadDate": "2021-01-04T00:00:00.0000000+00:00",
+                                                    "nextTestDate": null,
+                                                    "password": null,
+                                                    "point": null,
+                                                    "program": null,
+                                                    "readTypeCode": "RWD",
+                                                    "remotePhoneNumber": null,
+                                                    "route": null,
+                                                    "serialNumber": "B3243449",
+                                                    "status": "C",
+                                                    "testCalibrationProgram": null,
+                                                    "testPerformedBy": null,
+                                                    "testResultAccuracy": null,
+                                                    "testResultNotes": null,
+                                                    "transformerLocation": null,
+                                                    "transformerRatio": null,
+                                                    "transformerType": null,
+                                                    "use": null,
+                                                    "userAccessRights": null,
+                                                    "registers": [
+                                                        {
+                                                            "consumptionType": null,
+                                                            "controlledLoad": "N",
+                                                            "demand1": null,
+                                                            "demand2": null,
+                                                            "dialFormat": 6.3,
+                                                            "multiplier": 1,
+                                                            "networkAdditionalInformation": null,
+                                                            "networkTariffCode": "C1R",
+                                                            "registerId": "E1",
+                                                            "serialNumber": "B3243449",
+                                                            "status": "C",
+                                                            "suffix": "E1",
+                                                            "timeOfDay": "INTERVAL",
+                                                            "unitOfMeasure": "KWH"
+                                                        }
+                                                    ]
+                                                }
+                                            ],
+                                            "streams": [
+                                                {
+                                                    "averagedDailyLoad": 10,
+                                                    "dataStreamType": "Interval",
+                                                    "profileName": "NOPROF",
+                                                    "status": "A",
+                                                    "suffix": "N1"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "rejectedSites": [
+                                        {
+                                            "detailed": true,
+                                            "nmi": "6102206271",
+                                            "checkSum": "4",
+                                            "accessDetails": null,
+                                            "addressLine": null,
+                                            "addressLine2": null,
+                                            "addressLine3": null,
+                                            "aggregate": null,
+                                            "buildingOrPropertyName": null,
+                                            "buildingOrPropertyName2": null,
+                                            "childEmbeddedNetworkIdentifier": null,
+                                            "customerClassificationCode": "RESIDENTIAL",
+                                            "customerThresholdCode": "LOW",
+                                            "deliveryPointIdentifier": null,
+                                            "distanceFromSubstation": null,
+                                            "distributionLossFactorCode": "ELVE",
+                                            "feederClass": null,
+                                            "flatOrUnitNumber": null,
+                                            "flatOrUnitType": null,
+                                            "floorOrLevelNumber": null,
+                                            "floorOrLevelType": null,
+                                            "houseNumber": 293,
+                                            "houseNumber2": null,
+                                            "houseNumberSuffix": null,
+                                            "houseNumberSuffix2": null,
+                                            "jurisdictionCode": "VIC",
+                                            "locationDescriptor": null,
+                                            "lotNumber": null,
+                                            "nmiClassificationCode": "SMALL",
+                                            "parentEmbeddedNetworkIdentifier": null,
+                                            "poleNumber": null,
+                                            "postCode": "3104",
+                                            "stateOrTerritory": "VIC",
+                                            "status": "X",
+                                            "streetName": "BELMORE",
+                                            "streetName2": null,
+                                            "streetSuffix": null,
+                                            "streetSuffix2": null,
+                                            "streetType": "RD",
+                                            "streetType2": null,
+                                            "suburbOrPlaceOrLocality": "BALWYN NORTH",
+                                            "transmissionNodeIdentifier": "VTS2",
+                                            "voltageType": null,
+                                            "roles": [
+                                                {
+                                                    "party": "CITIPP",
+                                                    "role": "LNSP"
+                                                },
+                                                {
+                                                    "party": "CITIPP",
+                                                    "role": "RP"
+                                                },
+                                                {
+                                                    "party": "CPNETMDP",
+                                                    "role": "MDP"
+                                                },
+                                                {
+                                                    "party": "CITIPWMP",
+                                                    "role": "MPB"
+                                                },
+                                                {
+                                                    "party": "CPNETMDP",
+                                                    "role": "MPC"
+                                                }
+                                            ],
+                                            "meters": [],
+                                            "streams": []
+                                        },
+                                        {
+                                            "detailed": true,
+                                            "nmi": "6103048137",
+                                            "checkSum": "6",
+                                            "accessDetails": null,
+                                            "addressLine": null,
+                                            "addressLine2": null,
+                                            "addressLine3": null,
+                                            "aggregate": null,
+                                            "buildingOrPropertyName": null,
+                                            "buildingOrPropertyName2": null,
+                                            "childEmbeddedNetworkIdentifier": null,
+                                            "customerClassificationCode": "BUSINESS",
+                                            "customerThresholdCode": "LOW",
+                                            "deliveryPointIdentifier": null,
+                                            "distanceFromSubstation": null,
+                                            "distributionLossFactorCode": "ELVE",
+                                            "feederClass": null,
+                                            "flatOrUnitNumber": null,
+                                            "flatOrUnitType": null,
+                                            "floorOrLevelNumber": null,
+                                            "floorOrLevelType": null,
+                                            "houseNumber": 293,
+                                            "houseNumber2": null,
+                                            "houseNumberSuffix": null,
+                                            "houseNumberSuffix2": null,
+                                            "jurisdictionCode": "VIC",
+                                            "locationDescriptor": null,
+                                            "lotNumber": null,
+                                            "nmiClassificationCode": "SMALL",
+                                            "parentEmbeddedNetworkIdentifier": null,
+                                            "poleNumber": null,
+                                            "postCode": "3104",
+                                            "stateOrTerritory": "VIC",
+                                            "status": "X",
+                                            "streetName": "BELMORE",
+                                            "streetName2": null,
+                                            "streetSuffix": null,
+                                            "streetSuffix2": null,
+                                            "streetType": "RD",
+                                            "streetType2": null,
+                                            "suburbOrPlaceOrLocality": "BALWYN NORTH",
+                                            "transmissionNodeIdentifier": "VTS2",
+                                            "voltageType": null,
+                                            "roles": [
+                                                {
+                                                    "party": "CITIPP",
+                                                    "role": "LNSP"
+                                                },
+                                                {
+                                                    "party": "CPNETMDP",
+                                                    "role": "MDP"
+                                                },
+                                                {
+                                                    "party": "CITIPWMP",
+                                                    "role": "MPB"
+                                                },
+                                                {
+                                                    "party": "CPNETMDP",
+                                                    "role": "MPC"
+                                                },
+                                                {
+                                                    "party": "CITIPP",
+                                                    "role": "RP"
+                                                }
+                                            ],
+                                            "meters": [
+                                                {
+                                                    "additionalSiteInformation": null,
+                                                    "assetManagementPlan": null,
+                                                    "calibrationTables": null,
+                                                    "communicationsEquipmentType": null,
+                                                    "communicationsProtocol": null,
+                                                    "constant": null,
+                                                    "customerFundedMeter": null,
+                                                    "dataConversion": null,
+                                                    "dataValidations": null,
+                                                    "estimationInstructions": null,
+                                                    "hazard": null,
+                                                    "installationTypeCode": "MRIM",
+                                                    "keyCode": null,
+                                                    "lastTestDate": null,
+                                                    "location": null,
+                                                    "manufacturer": null,
+                                                    "measurementType": null,
+                                                    "model": null,
+                                                    "nextScheduledReadDate": "2017-12-04T00:00:00.0000000+00:00",
+                                                    "nextTestDate": null,
+                                                    "password": null,
+                                                    "point": null,
+                                                    "program": null,
+                                                    "readTypeCode": "RWD",
+                                                    "remotePhoneNumber": null,
+                                                    "route": null,
+                                                    "serialNumber": "A8895199",
+                                                    "status": "C",
+                                                    "testCalibrationProgram": null,
+                                                    "testPerformedBy": null,
+                                                    "testResultAccuracy": null,
+                                                    "testResultNotes": null,
+                                                    "transformerLocation": null,
+                                                    "transformerRatio": null,
+                                                    "transformerType": null,
+                                                    "use": null,
+                                                    "userAccessRights": null,
+                                                    "registers": [
+                                                        {
+                                                            "consumptionType": null,
+                                                            "controlledLoad": "N",
+                                                            "demand1": null,
+                                                            "demand2": null,
+                                                            "dialFormat": 6.3,
+                                                            "multiplier": 1,
+                                                            "networkAdditionalInformation": null,
+                                                            "networkTariffCode": "C1G",
+                                                            "registerId": "E1",
+                                                            "serialNumber": "A8895199",
+                                                            "status": "C",
+                                                            "suffix": "E1",
+                                                            "timeOfDay": "INTERVAL",
+                                                            "unitOfMeasure": "KWH"
+                                                        }
+                                                    ]
+                                                }
+                                            ],
+                                            "streams": []
+                                        }
+                                    ],
+                                    "events": [],
+                                    "sucess": true,
+                                    "error": null,
+                                    "responseCode": 0,
+                                    "xmlContent": "<?xml version=\"1.0\" ?>\n<ase:aseXML xmlns:ase=\"urn:aseXML:r35\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"urn:aseXML:r35 http://www.nemmco.com.au/aseXML/schemas/r35/aseXML_r35.xsd\">\n  <Header>\n    <From description=\"Australian Energy Market Operator Limited\">NEMMCO</From>\n    <To description=\"Social Energy Australia Pty Ltd\"></To>\n    <MessageID>NEMMCO-MSG-924407792</MessageID>\n    <MessageDate>2020-12-10T21:29:00+10:00</MessageDate>\n    <TransactionGroup>NMID</TransactionGroup>\n    <Priority>High</Priority>\n    <SecurityContext>NEMMCOBATCH</SecurityContext>\n    <Market>NEM</Market>\n  </Header>\n  <Transactions>\n    <Transaction transactionID=\"NMID-924407792\" transactionDate=\"2020-12-10T21:29:00+10:00\" initiatingTransactionID=\"8a7b607d1f114cd38d7e2159dc2d1c82\">\n<NMIDiscoveryResponse version=\"r17\">\n<NMIStandingData xsi:type=\"ase:ElectricityStandingData\" version=\"r35\">\n  <NMI checksum=\"4\">6102206271</NMI>\n<MasterData>\n  <Address>\n    <StructuredAddress>\n      <House>\n        <HouseNumber>293</HouseNumber>\n      </House>\n      <Street>\n        <StreetName>BELMORE</StreetName>\n        <StreetType>RD</StreetType>\n      </Street>\n    </StructuredAddress>\n    <SuburbOrPlaceOrLocality>BALWYN NORTH</SuburbOrPlaceOrLocality>\n    <StateOrTerritory>VIC</StateOrTerritory>\n    <PostCode>3104</PostCode>\n    <DeliveryPointIdentifier>84721891</DeliveryPointIdentifier>\n  </Address>\n  <CustomerClassificationCode>RESIDENTIAL</CustomerClassificationCode>\n  <CustomerThresholdCode>LOW</CustomerThresholdCode>\n</MasterData>\n  <RoleAssignments>\n    <RoleAssignment>\n      <Party>CITIPP</Party>\n      <Role>LNSP</Role>\n    </RoleAssignment>\n  </RoleAssignments>\n</NMIStandingData>\n<NMIStandingData xsi:type=\"ase:ElectricityStandingData\" version=\"r35\">\n  <NMI checksum=\"1\">6103052254</NMI>\n<MasterData>\n  <Address>\n    <StructuredAddress>\n      <House>\n        <HouseNumber>293</HouseNumber>\n      </House>\n      <Street>\n        <StreetName>BELMORE</StreetName>\n        <StreetType>RD</StreetType>\n      </Street>\n    </StructuredAddress>\n    <SuburbOrPlaceOrLocality>BALWYN NORTH</SuburbOrPlaceOrLocality>\n    <StateOrTerritory>VIC</StateOrTerritory>\n    <PostCode>3104</PostCode>\n    <DeliveryPointIdentifier>84721891</DeliveryPointIdentifier>\n  </Address>\n  <CustomerClassificationCode>RESIDENTIAL</CustomerClassificationCode>\n  <CustomerThresholdCode>LOW</CustomerThresholdCode>\n</MasterData>\n  <RoleAssignments>\n    <RoleAssignment>\n      <Party>CITIPP</Party>\n      <Role>LNSP</Role>\n    </RoleAssignment>\n  </RoleAssignments>\n</NMIStandingData>\n<NMIStandingData xsi:type=\"ase:ElectricityStandingData\" version=\"r35\">\n  <NMI checksum=\"6\">6103048137</NMI>\n<MasterData>\n  <Address>\n    <StructuredAddress>\n      <House>\n        <HouseNumber>293</HouseNumber>\n      </House>\n      <Street>\n        <StreetName>BELMORE</StreetName>\n        <StreetType>RD</StreetType>\n      </Street>\n    </StructuredAddress>\n    <SuburbOrPlaceOrLocality>BALWYN NORTH</SuburbOrPlaceOrLocality>\n    <StateOrTerritory>VIC</StateOrTerritory>\n    <PostCode>3104</PostCode>\n    <DeliveryPointIdentifier>84721891</DeliveryPointIdentifier>\n  </Address>\n  <CustomerClassificationCode>BUSINESS</CustomerClassificationCode>\n  <CustomerThresholdCode>LOW</CustomerThresholdCode>\n</MasterData>\n  <RoleAssignments>\n    <RoleAssignment>\n      <Party>CITIPP</Party>\n      <Role>LNSP</Role>\n    </RoleAssignment>\n  </RoleAssignments>\n</NMIStandingData>\n        <Event severity=\"Information\"> \n          <Code>0</Code>\n        </Event>\n</NMIDiscoveryResponse>\n    </Transaction>\n  </Transactions>\n</ase:aseXML>"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "DiscoveryResult": {
+                "type": "object",
+                "properties": {
+                    "searchMethod": {
+                        "type": "string"
+                    },
+                    "addressValid": {
+                        "type": "boolean"
+                    },
+                    "addressesSearched": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "matchingSites": {
+                        "type": "array",
+                        "items": {
+                            "required": [
+                                "detailed",
+                                "nmi",
+                                "checkSum",
+                                "accessDetails",
+                                "addressLine",
+                                "addressLine2",
+                                "addressLine3",
+                                "aggregate",
+                                "buildingOrPropertyName",
+                                "buildingOrPropertyName2",
+                                "childEmbeddedNetworkIdentifier",
+                                "customerClassificationCode",
+                                "customerThresholdCode",
+                                "deliveryPointIdentifier",
+                                "distanceFromSubstation",
+                                "distributionLossFactorCode",
+                                "feederClass",
+                                "flatOrUnitNumber",
+                                "flatOrUnitType",
+                                "floorOrLevelNumber",
+                                "floorOrLevelType",
+                                "houseNumber",
+                                "houseNumber2",
+                                "houseNumberSuffix",
+                                "houseNumberSuffix2",
+                                "jurisdictionCode",
+                                "locationDescriptor",
+                                "lotNumber",
+                                "nmiClassificationCode",
+                                "parentEmbeddedNetworkIdentifier",
+                                "poleNumber",
+                                "postCode",
+                                "stateOrTerritory",
+                                "status",
+                                "streetName",
+                                "streetName2",
+                                "streetSuffix",
+                                "streetSuffix2",
+                                "streetType",
+                                "streetType2",
+                                "suburbOrPlaceOrLocality",
+                                "transmissionNodeIdentifier",
+                                "voltageType",
+                                "roles",
+                                "meters",
+                                "streams"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "detailed": {
+                                    "type": "boolean"
+                                },
+                                "nmi": {
+                                    "type": "string"
+                                },
+                                "checkSum": {
+                                    "type": "string"
+                                },
+                                "accessDetails": {},
+                                "addressLine": {},
+                                "addressLine2": {},
+                                "addressLine3": {},
+                                "aggregate": {},
+                                "buildingOrPropertyName": {},
+                                "buildingOrPropertyName2": {},
+                                "childEmbeddedNetworkIdentifier": {},
+                                "customerClassificationCode": {
+                                    "type": "string"
+                                },
+                                "customerThresholdCode": {
+                                    "type": "string"
+                                },
+                                "deliveryPointIdentifier": {},
+                                "distanceFromSubstation": {},
+                                "distributionLossFactorCode": {
+                                    "type": "string"
+                                },
+                                "feederClass": {},
+                                "flatOrUnitNumber": {},
+                                "flatOrUnitType": {},
+                                "floorOrLevelNumber": {},
+                                "floorOrLevelType": {},
+                                "houseNumber": {
+                                    "type": "integer"
+                                },
+                                "houseNumber2": {},
+                                "houseNumberSuffix": {},
+                                "houseNumberSuffix2": {},
+                                "jurisdictionCode": {
+                                    "type": "string"
+                                },
+                                "locationDescriptor": {},
+                                "lotNumber": {},
+                                "nmiClassificationCode": {
+                                    "type": "string"
+                                },
+                                "parentEmbeddedNetworkIdentifier": {},
+                                "poleNumber": {},
+                                "postCode": {
+                                    "type": "string"
+                                },
+                                "stateOrTerritory": {
+                                    "type": "string"
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "streetName": {
+                                    "type": "string"
+                                },
+                                "streetName2": {},
+                                "streetSuffix": {},
+                                "streetSuffix2": {},
+                                "streetType": {
+                                    "type": "string"
+                                },
+                                "streetType2": {},
+                                "suburbOrPlaceOrLocality": {
+                                    "type": "string"
+                                },
+                                "transmissionNodeIdentifier": {
+                                    "type": "string"
+                                },
+                                "voltageType": {},
+                                "roles": {
+                                    "type": "array",
+                                    "items": {
+                                        "required": [
+                                            "party",
+                                            "role"
+                                        ],
+                                        "type": "object",
+                                        "properties": {
+                                            "party": {
+                                                "type": "string"
+                                            },
+                                            "role": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "meters": {
+                                    "type": "array",
+                                    "items": {
+                                        "required": [
+                                            "additionalSiteInformation",
+                                            "assetManagementPlan",
+                                            "calibrationTables",
+                                            "communicationsEquipmentType",
+                                            "communicationsProtocol",
+                                            "constant",
+                                            "customerFundedMeter",
+                                            "dataConversion",
+                                            "dataValidations",
+                                            "estimationInstructions",
+                                            "hazard",
+                                            "installationTypeCode",
+                                            "keyCode",
+                                            "lastTestDate",
+                                            "location",
+                                            "manufacturer",
+                                            "measurementType",
+                                            "model",
+                                            "nextScheduledReadDate",
+                                            "nextTestDate",
+                                            "password",
+                                            "point",
+                                            "program",
+                                            "readTypeCode",
+                                            "remotePhoneNumber",
+                                            "route",
+                                            "serialNumber",
+                                            "status",
+                                            "testCalibrationProgram",
+                                            "testPerformedBy",
+                                            "testResultAccuracy",
+                                            "testResultNotes",
+                                            "transformerLocation",
+                                            "transformerRatio",
+                                            "transformerType",
+                                            "use",
+                                            "userAccessRights",
+                                            "registers"
+                                        ],
+                                        "type": "object",
+                                        "properties": {
+                                            "additionalSiteInformation": {},
+                                            "assetManagementPlan": {},
+                                            "calibrationTables": {},
+                                            "communicationsEquipmentType": {},
+                                            "communicationsProtocol": {},
+                                            "constant": {},
+                                            "customerFundedMeter": {},
+                                            "dataConversion": {},
+                                            "dataValidations": {},
+                                            "estimationInstructions": {},
+                                            "hazard": {},
+                                            "installationTypeCode": {
+                                                "type": "string"
+                                            },
+                                            "keyCode": {},
+                                            "lastTestDate": {},
+                                            "location": {},
+                                            "manufacturer": {},
+                                            "measurementType": {},
+                                            "model": {},
+                                            "nextScheduledReadDate": {
+                                                "type": "string"
+                                            },
+                                            "nextTestDate": {},
+                                            "password": {},
+                                            "point": {},
+                                            "program": {},
+                                            "readTypeCode": {
+                                                "type": "string"
+                                            },
+                                            "remotePhoneNumber": {},
+                                            "route": {},
+                                            "serialNumber": {
+                                                "type": "string"
+                                            },
+                                            "status": {
+                                                "type": "string"
+                                            },
+                                            "testCalibrationProgram": {},
+                                            "testPerformedBy": {},
+                                            "testResultAccuracy": {},
+                                            "testResultNotes": {},
+                                            "transformerLocation": {},
+                                            "transformerRatio": {},
+                                            "transformerType": {},
+                                            "use": {},
+                                            "userAccessRights": {},
+                                            "registers": {
+                                                "type": "array",
+                                                "items": {
+                                                    "required": [
+                                                        "consumptionType",
+                                                        "controlledLoad",
+                                                        "demand1",
+                                                        "demand2",
+                                                        "dialFormat",
+                                                        "multiplier",
+                                                        "networkAdditionalInformation",
+                                                        "networkTariffCode",
+                                                        "registerId",
+                                                        "serialNumber",
+                                                        "status",
+                                                        "suffix",
+                                                        "timeOfDay",
+                                                        "unitOfMeasure"
+                                                    ],
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "consumptionType": {},
+                                                        "controlledLoad": {
+                                                            "type": "string"
+                                                        },
+                                                        "demand1": {},
+                                                        "demand2": {},
+                                                        "dialFormat": {
+                                                            "type": "number"
+                                                        },
+                                                        "multiplier": {
+                                                            "type": "integer"
+                                                        },
+                                                        "networkAdditionalInformation": {},
+                                                        "networkTariffCode": {
+                                                            "type": "string"
+                                                        },
+                                                        "registerId": {
+                                                            "type": "string"
+                                                        },
+                                                        "serialNumber": {
+                                                            "type": "string"
+                                                        },
+                                                        "status": {
+                                                            "type": "string"
+                                                        },
+                                                        "suffix": {
+                                                            "type": "string"
+                                                        },
+                                                        "timeOfDay": {
+                                                            "type": "string"
+                                                        },
+                                                        "unitOfMeasure": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "streams": {
+                                    "type": "array",
+                                    "items": {
+                                        "required": [
+                                            "averagedDailyLoad",
+                                            "dataStreamType",
+                                            "profileName",
+                                            "status",
+                                            "suffix"
+                                        ],
+                                        "type": "object",
+                                        "properties": {
+                                            "averagedDailyLoad": {
+                                                "type": "integer"
+                                            },
+                                            "dataStreamType": {
+                                                "type": "string"
+                                            },
+                                            "profileName": {
+                                                "type": "string"
+                                            },
+                                            "status": {
+                                                "type": "string"
+                                            },
+                                            "suffix": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "rejectedSites": {
+                        "type": "array",
+                        "items": {
+                            "required": [
+                                "detailed",
+                                "nmi",
+                                "checkSum",
+                                "accessDetails",
+                                "addressLine",
+                                "addressLine2",
+                                "addressLine3",
+                                "aggregate",
+                                "buildingOrPropertyName",
+                                "buildingOrPropertyName2",
+                                "childEmbeddedNetworkIdentifier",
+                                "customerClassificationCode",
+                                "customerThresholdCode",
+                                "deliveryPointIdentifier",
+                                "distanceFromSubstation",
+                                "distributionLossFactorCode",
+                                "feederClass",
+                                "flatOrUnitNumber",
+                                "flatOrUnitType",
+                                "floorOrLevelNumber",
+                                "floorOrLevelType",
+                                "houseNumber",
+                                "houseNumber2",
+                                "houseNumberSuffix",
+                                "houseNumberSuffix2",
+                                "jurisdictionCode",
+                                "locationDescriptor",
+                                "lotNumber",
+                                "nmiClassificationCode",
+                                "parentEmbeddedNetworkIdentifier",
+                                "poleNumber",
+                                "postCode",
+                                "stateOrTerritory",
+                                "status",
+                                "streetName",
+                                "streetName2",
+                                "streetSuffix",
+                                "streetSuffix2",
+                                "streetType",
+                                "streetType2",
+                                "suburbOrPlaceOrLocality",
+                                "transmissionNodeIdentifier",
+                                "voltageType",
+                                "roles",
+                                "meters",
+                                "streams"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "detailed": {
+                                    "type": "boolean"
+                                },
+                                "nmi": {
+                                    "type": "string"
+                                },
+                                "checkSum": {
+                                    "type": "string"
+                                },
+                                "accessDetails": {},
+                                "addressLine": {},
+                                "addressLine2": {},
+                                "addressLine3": {},
+                                "aggregate": {},
+                                "buildingOrPropertyName": {},
+                                "buildingOrPropertyName2": {},
+                                "childEmbeddedNetworkIdentifier": {},
+                                "customerClassificationCode": {
+                                    "type": "string"
+                                },
+                                "customerThresholdCode": {
+                                    "type": "string"
+                                },
+                                "deliveryPointIdentifier": {},
+                                "distanceFromSubstation": {},
+                                "distributionLossFactorCode": {
+                                    "type": "string"
+                                },
+                                "feederClass": {},
+                                "flatOrUnitNumber": {},
+                                "flatOrUnitType": {},
+                                "floorOrLevelNumber": {},
+                                "floorOrLevelType": {},
+                                "houseNumber": {
+                                    "type": "integer"
+                                },
+                                "houseNumber2": {},
+                                "houseNumberSuffix": {},
+                                "houseNumberSuffix2": {},
+                                "jurisdictionCode": {
+                                    "type": "string"
+                                },
+                                "locationDescriptor": {},
+                                "lotNumber": {},
+                                "nmiClassificationCode": {
+                                    "type": "string"
+                                },
+                                "parentEmbeddedNetworkIdentifier": {},
+                                "poleNumber": {},
+                                "postCode": {
+                                    "type": "string"
+                                },
+                                "stateOrTerritory": {
+                                    "type": "string"
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "streetName": {
+                                    "type": "string"
+                                },
+                                "streetName2": {},
+                                "streetSuffix": {},
+                                "streetSuffix2": {},
+                                "streetType": {
+                                    "type": "string"
+                                },
+                                "streetType2": {},
+                                "suburbOrPlaceOrLocality": {
+                                    "type": "string"
+                                },
+                                "transmissionNodeIdentifier": {
+                                    "type": "string"
+                                },
+                                "voltageType": {},
+                                "roles": {
+                                    "type": "array",
+                                    "items": {
+                                        "required": [
+                                            "party",
+                                            "role"
+                                        ],
+                                        "type": "object",
+                                        "properties": {
+                                            "party": {
+                                                "type": "string"
+                                            },
+                                            "role": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "meters": {
+                                    "type": "array"
+                                },
+                                "streams": {
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    },
+                    "events": {
+                        "type": "array"
+                    },
+                    "sucess": {
+                        "type": "boolean"
+                    },
+                    "error": {},
+                    "responseCode": {
+                        "type": "integer"
+                    },
+                    "xmlContent": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "apiKeyHeader": {
+                "type": "apiKey",
+                "name": "Ocp-Apim-Subscription-Key",
+                "in": "header"
+            },
+            "apiKeyQuery": {
+                "type": "apiKey",
+                "name": "subscription-key",
+                "in": "query"
+            }
+        }
+    },
+    "security": [
+        {
+            "apiKeyHeader": []
+        },
+        {
+            "apiKeyQuery": []
+        }
+    ]
+}
